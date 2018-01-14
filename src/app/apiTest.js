@@ -1,5 +1,4 @@
-
-
+import axios from 'axios';
 const url = "https://trackapi.nutritionix.com/v2/search/item?nix_item_id=570d85c6806817ee1300c785"
 const urlSearch = "https://trackapi.nutritionix.com/v2/search/instant?query=Kale"
 
@@ -13,7 +12,7 @@ function getRequest(){
 		"x-remote-user-id": 0
 	}}
 	).then((response) => {
-		console.log("Hi");
+		console.log("it works");
 		console.log(response.data.foods[0].food_name);
 		console.log(response.data.foods[0].serving_qty);
 		console.log(response.data.foods[0].serving_unit);

@@ -1,5 +1,5 @@
 {
-  "name": "Food Calorie Searcher",
+  "name": "Chrome_Extension_Project",
   "version": "1.0.0",
   "description": "Chrome extension to help users find the calories of food they find on the internet",
   "main": "webpack.config.js",
