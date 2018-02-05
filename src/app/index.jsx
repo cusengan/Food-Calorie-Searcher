@@ -70,6 +70,11 @@ class App extends React.Component{
 				this.setState({
 					resourceID: data.brand.id,
 					food: data.brand.name,
+					picture: data.images.front.full,
+					calories: data.label.nutrients[4].value,
+					protein: data.label.nutrients[0].value,
+					carbs: data.label.nutrients[2].value,
+					fat: data.label.nutrients[1].value,
 					showState: true,
 					showError: false
 				})
@@ -95,7 +100,8 @@ class App extends React.Component{
 				<input type="text" value={this.state.foodSearch} onChange={this.handleChange}/>
 				<input type="submit" value="Submit" onClick={this.handleSubmit}/>
 				<button id="search"> Click here!</button>
-				{this.state.showState && <FoodInfo text={this.state.resourceID} food={this.state.food}/>}
+				{this.state.showState && <FoodInfo food={this.state.food} picture={this.state.picture} calories={this.state.calories} 
+				protein={this.state.protein} carbs={this.state.carbs} fat={this.state.fat}/>}
 				{this.state.showError && <Error errorMessage={this.state.error}/>}
 			</div>
 		);
