@@ -1,9 +1,9 @@
 import React from 'react'
 import {render} from 'react-dom'
 import FoodInfo from './foodInfo.jsx'
+import FoodGraph from './foodGraph.jsx'
 import Error from './error.jsx'
 import axios from 'axios'
-import './apiTest'
 
 const urlFindResourceId = 'https://apibeta.nutritionix.com/v2/search?q='
 const urlSearch = 'https://apibeta.nutritionix.com/v2/item/'
@@ -101,6 +101,8 @@ class App extends React.Component{
 				<input type="submit" value="Submit" onClick={this.handleSubmit}/>
 				<button id="search"> Click here!</button>
 				{this.state.showState && <FoodInfo food={this.state.food} picture={this.state.picture} calories={this.state.calories} 
+				protein={this.state.protein} carbs={this.state.carbs} fat={this.state.fat}/>}
+				{this.state.showState && <FoodGraph food={this.state.food} picture={this.state.picture} calories={this.state.calories} 
 				protein={this.state.protein} carbs={this.state.carbs} fat={this.state.fat}/>}
 				{this.state.showError && <Error errorMessage={this.state.error}/>}
 			</div>
