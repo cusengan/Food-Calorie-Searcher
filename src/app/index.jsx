@@ -28,6 +28,7 @@ class App extends React.Component{
 		this.handleChange = this.handleChange.bind(this)
 		this.handleSubmit = this.handleSubmit.bind(this)
 		this.displayError = this.displayError.bind(this)
+		this.handleKeyPress = this.handleKeyPress.bind(this)
 	}
 
 	displayError(){
@@ -93,13 +94,20 @@ class App extends React.Component{
 		event.preventDefault()
 	}
 
+	handleKeyPress(event){
+		if(event.charCode == 13){
+			event.preventDefault()
+    		event.stopPropagation()
+    		this.handleSubmit(event)
+		}
+	}
+
 	render(){
 		return(
 			<div>
 				<h1>Calorie Searcher</h1>
-				<input type="text" value={this.state.foodSearch} onChange={this.handleChange}/>
+				<input type="text" value={this.state.foodSearch} onChange={this.handleChange} onKeyPress={this.handleKeyPress}/>
 				<input type="submit" value="Submit" onClick={this.handleSubmit}/>
-				<button id="search"> Click here!</button>
 				{this.state.showState && <FoodInfo food={this.state.food} picture={this.state.picture} calories={this.state.calories} 
 				protein={this.state.protein} carbs={this.state.carbs} fat={this.state.fat}/>}
 				{this.state.showState && <FoodGraph food={this.state.food} picture={this.state.picture} calories={this.state.calories} 

@@ -1,45 +1,61 @@
 import React from 'react'
-import {Line as LineChart} from 'react-chartjs'
+import {Pie} from 'react-chartjs-2'
 
 class FoodGraph extends React.Component{
 	constructor(props){
 		super(props)
 		var data = {
-			labels: ["January", "February", "March", "April", "May", "June", "July"],
 			datasets: [
 				{
-					label: "My First dataset",
-					fillColor: "rgba(220,220,220,0.2)",
-					strokeColor: "rgba(220,220,220,1)",
-					pointColor: "rgba(220,220,220,1)",
-					pointStrokeColor: "#fff",
-					pointHighlightFill: "#fff",
-					pointHighlightStroke: "rgba(220,220,220,1)",
-					data: [65, 59, 80, 81, 56, 55, 40]
-				},
-				{
-					label: "My Second dataset",
-					fillColor: "rgba(151,187,205,0.2)",
-					strokeColor: "rgba(151,187,205,1)",
-					pointColor: "rgba(151,187,205,1)",
-					pointStrokeColor: "#fff",
-					pointHighlightFill: "#fff",
-					pointHighlightStroke: "rgba(151,187,205,1)",
-					data: [28, 48, 40, 19, 86, 27, 90]
+					data: [this.props.protein, this.props.carbs, this.props.fat],
+					backgroundColor: [
+					'#FF6384',
+					'#36A2EB',
+					'#FFCE56'
+					],
+					hoverBackgroundColor: [
+					'#FF6384',
+					'#36A2EB',
+					'#FFCE56'
+					]
 				}
-			]
+			],
+			labels: ['Protein','Carbs', 'Fat'],
+			
 		};
 		this.state = {
 			chartData: data
 		}
 	}
 
-	componentDidMount(){
+	componentWillReceiveProps(nextProps){ //this method is called when new props are coming to this component
+		var data = {
+			datasets: [
+				{
+					data: [nextProps.protein, nextProps.carbs, nextProps.fat],
+					backgroundColor: [
+					'#FF6384',
+					'#36A2EB',
+					'#FFCE56'
+					],
+					hoverBackgroundColor: [
+					'#FF6384',
+					'#36A2EB',
+					'#FFCE56'
+					]
+				}
+			],
+			labels: ['Protein','Carbs', 'Fat'],
+			
+		};
+		this.setState({
+			chartData: data
+		})
 	}
 
 	render(){
 		return(
-			<LineChart data={this.state.chartData} options={null} width="600" height="250"/>
+			<Pie data={this.state.chartData} />
 		)
 	}
 
