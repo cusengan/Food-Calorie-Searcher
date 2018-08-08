@@ -24,6 +24,7 @@
     "webpack": "^4.16.5"
   },
   "dependencies": {
-    "lodash": "^4.17.10"
+    "lodash": "^4.17.10",
+    "moment": "^2.22.2"
   }
 }
